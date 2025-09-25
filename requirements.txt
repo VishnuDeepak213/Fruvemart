@@ -7,3 +7,4 @@ passlib[bcrypt]==1.7.4
 sqlalchemy==2.0.23
 python-dotenv==1.0.0
 qrcode[pil]==7.4.2
+pydantic[email]
