@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMart - Premium Organic Produce</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <span>FreshMart</span>
+                </div>
+            </div>
+            
+            <div class="search-section">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search for fresh organic produce...">
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="cart-section" id="cartSection">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cartCount">0</span>
+                </div>
+                
+                <div class="auth-section" id="authSection">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="authText">Sign In</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Fresh & Organic</h1>
+            <p>Premium quality vegetables and fruits delivered to your doorstep</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Fresh Products</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Delivery</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Organic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="vegetables">Vegetables</button>
+                <button class="filter-btn" data-filter="fruits">Fruits</button>
+                <button class="filter-btn" data-filter="organic">Organic Only</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="categories-grid" id="categoriesContainer">
+                <!-- Categories will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2>Fresh Products</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: ₹<span id="cartTotal">0.00</span></span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">
+                <i class="fas fa-credit-card"></i>
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Sign In</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="authForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    
+                    <div id="extraFields" style="display: none;">
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Email">
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-user-tag"></i>
+                            <input type="text" id="fullName" placeholder="Full Name">
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-home"></i>
+                            <textarea id="address" placeholder="Address"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn" id="authSubmit">Sign In</button>
+                </form>
+                
+                <div class="demo-accounts">
+                    <p>Try Demo Accounts:</p>
+                    <button class="demo-btn" data-user="testuser" data-pass="testpass123">Customer</button>
+                    <button class="demo-btn admin-demo" data-user="admin" data-pass="admin123">Admin</button>
+                </div>
+                
+                <div class="auth-switch">
+                    <span id="authSwitchText">Don't have an account?</span>
+                    <button type="button" id="authSwitchBtn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Price Update Modal -->
+    <div class="modal" id="priceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Update Price</h3>
+                <button class="close-modal" onclick="closePriceModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="priceForm">
+                    <div class="input-group">
+                        <i class="fas fa-tag"></i>
+                        <input type="number" id="newPrice" placeholder="Enter new price" step="0.01" min="0" required>
+                        <span>₹</span>
+                    </div>
+                    <button type="submit" class="auth-btn">Update Price</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <span>Loading...</span>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Admin Access Button -->
+    <div class="admin-access-btn" onclick="window.location.href='admin.html'" title="Admin Dashboard">
+        <i class="fas fa-cog"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
